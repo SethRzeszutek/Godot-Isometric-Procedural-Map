@@ -1,3 +1,4 @@
+
 extends Node2D
 
 ## Instantiate
@@ -5,8 +6,9 @@ var noise = OpenSimplexNoise.new();
 
 ### Configure ###
 ##NOTE: For rotate to work this must be a pefect square.
-var width = 50
-var height = width
+#var width = 50
+#var height = width
+var SIZE = 10
 
 var Octaves = 6 #originally 4
 var Period = 30.0 #originally 20
@@ -14,7 +16,7 @@ var Persistence = 0.3 #originally 8
 
 #SET TILES Y by -48#
 var rotateGrid = []
-var N = height #size of map can be either height or width when a perfect square
+var N = SIZE #size of map can be either height or width when a perfect square
 
 ###BUTTON SET UP###
 var buttons = []
@@ -56,13 +58,12 @@ func _input(event):
 
 func squareMap():
 	deleteMap()
-	var size = int($UI/Base/Size.get_text())
-	var octave = float($UI/Base/Octave.get_text())
-	var period = float($UI/Base/Period.get_text())
-	var persistence = float($UI/Base/Persistence.get_text())
+	var size = int($UI/Base/SizeGroup/Size.get_text())
+	var octave = float($UI/Base/OctaveGroup/Octave.get_text())
+	var period = float($UI/Base/PeriodGroup/Period.get_text())
+	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())
 	
-	width = size
-	height = width
+	SIZE = size
 	
 	Octaves = octave
 	Period = period
@@ -73,20 +74,19 @@ func squareMap():
 func rotateMap():
 	var tempgrid = rotateGrid
 	deleteMap()
-	N = width
+	N = SIZE
 	rotateGrid = rotate(tempgrid)
 	createMap(rotateGrid)
 
 func circleMap():
 	var tempgrid
 	deleteMap()
-	var size = int($UI/Base/Size.get_text())
-	var octave = float($UI/Base/Octave.get_text())
-	var period = float($UI/Base/Period.get_text())
-	var persistence = float($UI/Base/Persistence.get_text())
+	var size = int($UI/Base/SizeGroup/Size.get_text())
+	var octave = float($UI/Base/OctaveGroup/Octave.get_text())
+	var period = float($UI/Base/PeriodGroup/Period.get_text())
+	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())
 	
-	width = size
-	height = width
+	SIZE = size
 	
 	Octaves = octave
 	Period = period
@@ -95,8 +95,8 @@ func circleMap():
 	createMap(tempgrid)
 
 func deleteMap():
-	for i in width:
-		for j in height:
+	for i in SIZE:
+		for j in SIZE:
 			get_node("TileMap").set_cell(i,j,-1)
 	pass
 
@@ -105,8 +105,8 @@ func createMap(grid):
 	rotateGrid = grid
 	#self.set_position(Vector2(500,64))
 	#self.set_position(Vector2(1,1))
-	for i in width:
-		for j in height:
+	for i in SIZE:
+		for j in SIZE:
 			var x = grid[i][j]
 			if x > -0.80 and x<-0.38: # was set to -0.60 maybe ad a deep DEEP water?
 				get_node("TileMap").set_cell(i,j,5)
@@ -141,22 +141,26 @@ func simplexNoise():
 	noise.octaves = Octaves
 	noise.period = Period
 	noise.persistence = Persistence
-	for i in range(0,width):
+	for i in range(0,SIZE):
 		var tempGrid = []
-		for j in range(0,height):
+		for j in range(0,SIZE):
 			tempGrid.append(noise.get_noise_2d(i,j))
 		grid2.append(tempGrid)
-	print("Created noise - ",width,"x",height)
+	print("Created noise - ",SIZE,"x",SIZE)
 	return grid2
 	
 	
 func circle():
 #	var centerX = width+width/2
 #	var centerY = height+height/2
-	var radius = ((height+width)/2)/2
+	var radius
+	if SIZE%2 == 0:
+		radius = int(SIZE/2)
+	else:
+		radius = int(SIZE/2)+1
 	
-	var cx = width/2
-	var cy = height/2
+	var cx = SIZE/2
+	var cy = cx
 	var r = radius
 	
 	var tiles = simplexNoise()

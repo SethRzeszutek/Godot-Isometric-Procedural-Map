@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/map-generator.png-f5bed41f8c7e403c0fb55aaaad48cf5c.stex"
+path="res://.import/map-generator.png-c7fd33c6f841546dacebb43af9449929.stex"
 
 [deps]
 
-source_file="res://html/map-generator.png"
-dest_files=[ "res://.import/map-generator.png-f5bed41f8c7e403c0fb55aaaad48cf5c.stex" ]
+source_file="res://exports/map-generator.png"
+dest_files=[ "res://.import/map-generator.png-c7fd33c6f841546dacebb43af9449929.stex" ]
 
 [params]
 

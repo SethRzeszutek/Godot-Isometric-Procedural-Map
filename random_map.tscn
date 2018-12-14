@@ -49,76 +49,108 @@ patch_margin_bottom = 10
 modulate = Color( 0.021698, 0.17057, 0.617188, 0.509804 )
 rect_clip_content = true
 
-[node name="Size" type="LineEdit" parent="UI/Base"]
-margin_left = 284.128
-margin_top = -45.7951
-margin_right = 357.128
-margin_bottom = -13.7951
+[node name="SizeGroup" type="Control" parent="UI/Base"]
+margin_left = 284.0
+margin_top = -68.0
+margin_right = 358.0
+margin_bottom = -13.0
 
-[node name="Octave" type="LineEdit" parent="UI/Base"]
-margin_left = 411.606
-margin_top = -45.795
-margin_right = 484.606
-margin_bottom = -13.795
+[node name="Size" type="LineEdit" parent="UI/Base/SizeGroup"]
+margin_left = 0.127991
+margin_top = 22.2049
+margin_right = 73.128
+margin_bottom = 54.2049
 
-[node name="Period" type="LineEdit" parent="UI/Base"]
-margin_left = 492.728
-margin_top = -45.795
-margin_right = 565.728
-margin_bottom = -13.795
-
-[node name="Persistence" type="LineEdit" parent="UI/Base"]
-margin_left = 573.85
-margin_top = -45.795
-margin_right = 646.85
-margin_bottom = -13.795
-
-[node name="label" type="Label" parent="UI/Base"]
+[node name="label" type="Label" parent="UI/Base/SizeGroup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 286.0
-margin_top = -68.7265
-margin_right = -671.0
-margin_bottom = -46.7265
+margin_left = 2.0
+margin_top = -1.0
+margin_right = -1.0
+margin_bottom = -34.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Size"
 align = 1
 valign = 1
 
-[node name="label2" type="Label" parent="UI/Base"]
+[node name="OctaveGroup" type="Control" parent="UI/Base"]
+margin_left = 410.345
+margin_top = -68.0
+margin_right = 484.345
+margin_bottom = -13.0
+
+[node name="Octave" type="LineEdit" parent="UI/Base/OctaveGroup"]
+margin_left = 1.26077
+margin_top = 22.205
+margin_right = 74.2608
+margin_bottom = 54.205
+
+[node name="label2" type="Label" parent="UI/Base/OctaveGroup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 413.818
-margin_top = -68.5441
-margin_right = -538.182
-margin_bottom = -46.5441
+margin_left = 3.0
+margin_top = -1.0
+margin_right = -1.0
+margin_bottom = -34.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Octave"
 align = 1
 valign = 1
 
-[node name="label3" type="Label" parent="UI/Base"]
+[node name="PeriodGroup" type="Control" parent="UI/Base"]
+margin_left = 492.783
+margin_top = -67.1039
+margin_right = 566.783
+margin_bottom = -12.1039
+
+[node name="Period" type="LineEdit" parent="UI/Base/PeriodGroup"]
+margin_left = -0.0552673
+margin_top = 21.3089
+margin_right = 72.9448
+margin_bottom = 53.3089
+
+[node name="label3" type="Label" parent="UI/Base/PeriodGroup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 494.703
-margin_top = -67.6353
-margin_right = -457.297
-margin_bottom = -45.6353
+margin_left = 2.0
+margin_top = -1.0
+margin_right = -2.0
+margin_bottom = -34.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Period"
 align = 1
 valign = 1
 
-[node name="label4" type="Label" parent="UI/Base"]
+[node name="PersistGroup" type="Control" parent="UI/Base"]
+margin_left = 572.533
+margin_top = -68.8961
+margin_right = 646.533
+margin_bottom = -13.8961
+
+[node name="Persistence" type="LineEdit" parent="UI/Base/PersistGroup"]
+margin_left = 1.31689
+margin_top = 23.1011
+margin_right = 74.3169
+margin_bottom = 55.1011
+
+[node name="label4" type="Label" parent="UI/Base/PersistGroup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 573.772
-margin_top = -66.7264
-margin_right = -378.228
-margin_bottom = -44.7264
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 1.0
+margin_bottom = -31.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Persist."
