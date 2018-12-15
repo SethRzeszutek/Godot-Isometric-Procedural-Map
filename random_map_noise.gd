@@ -151,14 +151,14 @@ func simplexNoise():
 	
 	
 func circle():
-#	var centerX = width+width/2
-#	var centerY = height+height/2
 	var radius
+	#This has to be included for it to work correctly with odd numbers
 	if SIZE%2 == 0:
 		radius = int(SIZE/2)
 	else:
 		radius = int(SIZE/2)+1
 	
+	#center x and y
 	var cx = SIZE/2
 	var cy = cx
 	var r = radius
@@ -175,9 +175,7 @@ func make_circle(tiles, cx, cy, r):
 	for x in range(cx - r, cx + r):
 		for y in range(cy - r, cy + r):
 			if !(dist(cx, cy, x, y) <= r):
-				tiles[x][y] = 9999
-#			else:
-#				tiles[x][y] = 0
+				tiles[x][y] = 9999 #could be any number, but I know I won't use 9999 tile types
 	return(tiles)
 
 
@@ -215,6 +213,7 @@ func create_buttons():
 	but.rect_position = Vector2(buttons.size() * 64 + 32  , -60)
 	circle_but.rect_position = Vector2(buttons.size() * 64 + 32 + 64  , -60)
 	
+	#tried to implement these, but I cant really pull out the various directional controls into functions to cal and update 
 	#up_but.rect_position = Vector2(buttons.size() * 64 + 32 + 128 + 317 , -110)
 	#down_but.rect_position = Vector2(buttons.size() * 64 + 32 + 128 + 317 , -60)
 	#left_but.rect_position = Vector2(buttons.size() * 64 + 32 + 74 + 317 , -60)
