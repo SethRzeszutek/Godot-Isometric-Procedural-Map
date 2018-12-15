@@ -1,5 +1,6 @@
 extends Node2D
 
+
 ## Instantiate
 var noise = OpenSimplexNoise.new();
 
