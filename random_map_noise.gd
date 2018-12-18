@@ -17,6 +17,8 @@ var Persistence = 0.3 #originally 8
 var rotateGrid = []
 var N = SIZE #size of map can be either height or width when a perfect square
 
+var t = Timer.new()
+
 ###BUTTON SET UP###
 var buttons = []
 onready var run_button = preload("res://Other_Scenes/Button.tscn")
@@ -53,6 +55,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):  squareMap()
 	if event.is_action_pressed("ui_cancel"):  deleteMap()
 	if event.is_action_pressed("rotate"):  rotateMap()
+	if event.is_action_pressed("rotate_fail"):  rotateMapFail()
 	
 
 func squareMap():
@@ -61,9 +64,7 @@ func squareMap():
 	var octave = float($UI/Base/OctaveGroup/Octave.get_text())
 	var period = float($UI/Base/PeriodGroup/Period.get_text())
 	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())
-	
 	SIZE = size
-	
 	Octaves = octave
 	Period = period
 	Persistence = persistence
@@ -76,6 +77,13 @@ func rotateMap():
 	N = SIZE
 	rotateGrid = rotate(tempgrid)
 	createMap(rotateGrid)
+	
+func rotateMapFail():
+	var tempgrid = rotateGrid
+	deleteMap()
+	N = SIZE
+	rotateGrid = rotateFail(tempgrid)
+	createMap(rotateGrid)
 
 func circleMap():
 	var tempgrid
@@ -83,10 +91,8 @@ func circleMap():
 	var size = int($UI/Base/SizeGroup/Size.get_text())
 	var octave = float($UI/Base/OctaveGroup/Octave.get_text())
 	var period = float($UI/Base/PeriodGroup/Period.get_text())
-	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())
-	
-	SIZE = size
-	
+	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())	
+	SIZE = size	
 	Octaves = octave
 	Period = period
 	Persistence = persistence
@@ -156,14 +162,11 @@ func circle():
 		radius = int(SIZE/2)
 	else:
 		radius = int(SIZE/2)+1
-	
 	#center x and y
 	var cx = SIZE/2
 	var cy = cx
 	var r = radius
-	
 	var tiles = simplexNoise()
-	
 	tiles = make_circle(tiles, cx, cy, r)
 	return(tiles)
 
@@ -231,7 +234,43 @@ func create_buttons():
 	$'UI/Base'.add_child(in_but)
 	$'UI/Base'.add_child(out_but)
 
+func rotateFail(mat):
+	var top = 0
+	var bottom = len(mat)-1
+	var left = 0
+	var right = len(mat[0])-1
+  	
 
+	while left < right and top < bottom: 
+	# Store the first element of next row, 
+	# this element will replace first element of 
+	# current row 
+		var prev = mat[top+1][left] 
+		#Move elements of top row one step right 
+		for i in range(left, right+1): 
+			var curr = mat[top][i] 
+			mat[top][i] = prev 
+			prev = curr 
+		top += 1
+        # Move elements of rightmost column one step downwards 
+		for i in range(top, bottom+1): 
+			var curr = mat[i][right] 
+			mat[i][right] = prev 
+			prev = curr  
+		right -= 1
+        # Move elements of bottom row one step left 
+		for i in range(right, left-1, -1): 
+			var curr = mat[bottom][i] 
+			mat[bottom][i] = prev 
+			prev = curr 
+		bottom -= 1
+        # Move elements of leftmost column one step upwards 
+		for i in range(bottom, top-1, -1): 
+			var curr = mat[i][left] 
+			mat[i][left] = prev 
+			prev = curr 
+		left += 1
+	return mat 
 
 
 
