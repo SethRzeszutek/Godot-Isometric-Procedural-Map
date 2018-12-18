@@ -1,14 +1,14 @@
 extends Camera2D
 
-export var panSpeed = 30.0
+#export var panSpeed = 30.0
 export var speed = 30.0
 export var zoomspeed = 20.0
 #export var zoommargin = 0.1 #technically never used
 
 export var zoomMin = 0.25
 export var zoomMax = 60.0 #3.0
-export var marginX = 200.0
-export var marginY = 200.0
+#export var marginX = 200.0
+#export var marginY = 200.0
 
 var superdelta
 

@@ -29,6 +29,7 @@ script = ExtResource( 3 )
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Base" type="Control" parent="UI"]
+editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,6 +51,7 @@ modulate = Color( 0.021698, 0.17057, 0.617188, 0.509804 )
 rect_clip_content = true
 
 [node name="SizeGroup" type="Control" parent="UI/Base"]
+editor/display_folded = true
 margin_left = 284.0
 margin_top = -68.0
 margin_right = 358.0
@@ -77,6 +79,7 @@ align = 1
 valign = 1
 
 [node name="OctaveGroup" type="Control" parent="UI/Base"]
+editor/display_folded = true
 margin_left = 410.345
 margin_top = -68.0
 margin_right = 484.345

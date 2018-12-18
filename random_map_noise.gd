@@ -17,8 +17,6 @@ var Persistence = 0.3 #originally 8
 var rotateGrid = []
 var N = SIZE #size of map can be either height or width when a perfect square
 
-var t = Timer.new()
-
 ###BUTTON SET UP###
 var buttons = []
 onready var run_button = preload("res://Other_Scenes/Button.tscn")
@@ -26,30 +24,31 @@ onready var circle_button = preload("res://Other_Scenes/CircleButton.tscn")
 onready var rotate_button = preload("res://Other_Scenes/RotateButton.tscn")
 onready var zoom_in_button = preload("res://Other_Scenes/ZoomIn.tscn")
 onready var zoom_out_button = preload("res://Other_Scenes/ZoomOut.tscn")
+onready var data_button = preload("res://Other_Scenes/StartData.tscn")
 
-onready var up = preload("res://Other_Scenes/Up.tscn")
-onready var down = preload("res://Other_Scenes/Down.tscn")
-onready var left = preload("res://Other_Scenes/Left.tscn")
-onready var right = preload("res://Other_Scenes/Right.tscn")
+#onready var up = preload("res://Other_Scenes/Up.tscn")
+#onready var down = preload("res://Other_Scenes/Down.tscn")
+#onready var left = preload("res://Other_Scenes/Left.tscn")
+#onready var right = preload("res://Other_Scenes/Right.tscn")
 
 
 func _ready():
 	create_buttons()
 	set_process_input(true)
-	var but = run_button.instance()
-	but.connect_me(self)
-	var but1 = run_button.instance()
-	but1.connect_me(self)
-	var but2 = rotate_button.instance()
-	but2.connect_me(self)
-	var but5 = up.instance()
-	but5.connect_me(self)
-	var but6 = down.instance()
-	but6.connect_me(self)
-	var but7 = left.instance()
-	but7.connect_me(self)
-	var but8 = right.instance()
-	but8.connect_me(self)
+#	var but = run_button.instance()
+#	but.connect_me(self)
+#	var but1 = run_button.instance()
+#	but1.connect_me(self)
+#	var but2 = rotate_button.instance()
+#	but2.connect_me(self)
+#	var but5 = up.instance()
+#	but5.connect_me(self)
+#	var but6 = down.instance()
+#	but6.connect_me(self)
+#	var but7 = left.instance()
+#	but7.connect_me(self)
+#	var but8 = right.instance()
+#	but8.connect_me(self)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):  squareMap()
@@ -120,15 +119,16 @@ func createMap(grid):
 			elif x > -0.26 and x<-0.14:
 				get_node("TileMap").set_cell(i,j,10)
 			elif x > -0.14 and x<-0.02:
-				get_node("TileMap").set_cell(i,j,14) #To high
+				get_node("TileMap").set_cell(i,j,14) 
 			elif x > -0.02 and x< 0.10:
-				get_node("TileMap").set_cell(i,j,15) #Same height as 14
+				get_node("TileMap").set_cell(i,j,15) 
+				get_node("TileMap").set_cell(i,j,1)
 			elif x > 0.10 and x<0.22:
-				get_node("TileMap").set_cell(i,j,16) #Way too short and texture looks spread out?
+				get_node("TileMap").set_cell(i,j,16) 
 			elif x > 0.22 and x<0.46:
 				get_node("TileMap").set_cell(i,j,17)
 			elif x > 0.46 and x<0.60:
-				get_node("TileMap").set_cell(i,j,9) #Too high
+				get_node("TileMap").set_cell(i,j,9) 
 			elif x > 0.60 and x < 20:
 				get_node("TileMap").set_cell(i,j,8)
 			elif x == 9999:
@@ -205,13 +205,14 @@ func create_buttons():
 	var circle_but = circle_button.instance()
 	var rotate_but = rotate_button.instance()
 	
-	var up_but = up.instance()
-	var down_but = down.instance()
-	var left_but = left.instance()
-	var right_but = right.instance()
+#	var up_but = up.instance()
+#	var down_but = down.instance()
+#	var left_but = left.instance()
+#	var right_but = right.instance()
 	
 	var in_but = zoom_in_button.instance()
 	var out_but = zoom_out_button.instance()
+	var data_but = data_button.instance()
 	but.rect_position = Vector2(buttons.size() * 64 + 32  , -60)
 	circle_but.rect_position = Vector2(buttons.size() * 64 + 32 + 64  , -60)
 	
@@ -221,6 +222,7 @@ func create_buttons():
 	#left_but.rect_position = Vector2(buttons.size() * 64 + 32 + 74 + 317 , -60)
 	#right_but.rect_position = Vector2(buttons.size() * 64 + 32 + 182 + 317 , -60)
 	
+	data_but.rect_position = Vector2(buttons.size() * 64 + 32 + 64 + 560 , -50)
 	rotate_but.rect_position = Vector2(buttons.size() * 64 + 32 + 64 + 720 , -60)
 	in_but.rect_position = Vector2(buttons.size() * 64 + 32 + 128 + 720 , -60)
 	out_but.rect_position = Vector2(buttons.size() * 64 + 32 + 192 + 720, -60)
@@ -231,6 +233,7 @@ func create_buttons():
 	#$'UI/Base'.add_child(down_but)
 	#$'UI/Base'.add_child(left_but)
 	#$'UI/Base'.add_child(right_but)
+	$'UI/Base'.add_child(data_but)
 	$'UI/Base'.add_child(in_but)
 	$'UI/Base'.add_child(out_but)
 
