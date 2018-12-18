@@ -122,7 +122,6 @@ func createMap(grid):
 				get_node("TileMap").set_cell(i,j,14) 
 			elif x > -0.02 and x< 0.10:
 				get_node("TileMap").set_cell(i,j,15) 
-				get_node("TileMap").set_cell(i,j,1)
 			elif x > 0.10 and x<0.22:
 				get_node("TileMap").set_cell(i,j,16) 
 			elif x > 0.22 and x<0.46:
