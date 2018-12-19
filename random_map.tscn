@@ -42,7 +42,9 @@ margin_left = 9.59393
 margin_top = 12.7819
 margin_right = 274.594
 margin_bottom = 145.782
-text = "Thanks for trying this generator out!
+text = "Thanks for trying this generator out! 
+If you are new hit the question mark and 
+then choose a square or circle.
 
 - Up, Down, Left, Right = Move Camera
 - Mouse Scroll = Zooms In and Out
