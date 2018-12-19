@@ -32,8 +32,14 @@ onready var zoom_in_button = preload("res://Other_Scenes/ZoomIn.tscn")
 onready var zoom_out_button = preload("res://Other_Scenes/ZoomOut.tscn")
 
 func _ready():
-	connect("area_selected", get_parent(), "area_selected", [self])
-	connect("start_move_selection", get_parent(), "start_move_selection", [self])
+	#connect("area_selected", get_parent(), "area_selected", [self])
+	#connect("start_move_selection", get_parent(), "start_move_selection", [self])
+	position.x = 0
+	position.y = 700
+	
+	zoom.x = 2
+	zoom.y = zoom.x
+	
 	var but3 = zoom_in_button.instance()
 	but3.connect_me(self)
 	var but4 = zoom_out_button.instance()
@@ -49,7 +55,6 @@ func Right():
 	return(int(Input.is_action_pressed("ui_right")))
 
 func _process(delta):
-	superdelta=delta
 	#smooth movement
 	var inpx = ((Right()) - (Left()))
 	var inpy = ((Down()) - (Up()))
@@ -66,30 +71,30 @@ func _process(delta):
 #			position.y = lerp(position.y, position.y - abs(mousepos.y - marginY)/marginY * panSpeed * zoom.y, panSpeed * delta)
 #		elif mousepos.y > OS.window_size.y - marginY:
 #			position.y = lerp(position.y, position.y + abs(mousepos.y - OS.window_size.y + marginY)/marginY * panSpeed * zoom.y, panSpeed * delta)
-
-	if Input.is_action_just_pressed("ui_left_mouse_button"):
-		start = mouseposGlobal
-		startv = mousepos
-		is_dragging = true
-	if is_dragging:
-		end = mouseposGlobal
-		endv = mousepos
-		draw_area()
-	if Input.is_action_just_released("ui_left_mouse_button"):
-		if startv.distance_to(mousepos) > 20:
-			end = mouseposGlobal
-			endv = mousepos
-			is_dragging = false
-			draw_area(false)
-			emit_signal("area_selected")
-		else:
-			end = start
-			is_dragging = false
-			draw_area(false)
-	
-	if Input.is_action_just_released("ui_right_mouse_button"):
-		move_to_point = mouseposGlobal
-		emit_signal("start_move_selection")
+#
+#	if Input.is_action_just_pressed("ui_left_mouse_button"):
+#		start = mouseposGlobal
+#		startv = mousepos
+#		is_dragging = true
+#	if is_dragging:
+#		end = mouseposGlobal
+#		endv = mousepos
+#		draw_area()
+#	if Input.is_action_just_released("ui_left_mouse_button"):
+#		if startv.distance_to(mousepos) > 20:
+#			end = mouseposGlobal
+#			endv = mousepos
+#			is_dragging = false
+#			draw_area(false)
+#			emit_signal("area_selected")
+#		else:
+#			end = start
+#			is_dragging = false
+#			draw_area(false)
+#
+#	if Input.is_action_just_released("ui_right_mouse_button"):
+#		move_to_point = mouseposGlobal
+#		emit_signal("start_move_selection")
 	
 	
 	#zoom in

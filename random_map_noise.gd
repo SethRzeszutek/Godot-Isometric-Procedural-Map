@@ -35,6 +35,9 @@ onready var data_button = preload("res://Other_Scenes/StartData.tscn")
 func _ready():
 	create_buttons()
 	set_process_input(true)
+	var rec = Rect2(300,150,400,200)
+	get_node("UI/AcceptDialog").popup(rec)
+	
 #	var but = run_button.instance()
 #	but.connect_me(self)
 #	var but1 = run_button.instance()
@@ -164,6 +167,7 @@ func circle():
 	#center x and y
 	var cx = SIZE/2
 	var cy = cx
+	print(cx,"x",cy)
 	var r = radius
 	var tiles = simplexNoise()
 	tiles = make_circle(tiles, cx, cy, r)
@@ -235,6 +239,10 @@ func create_buttons():
 	$'UI/Base'.add_child(data_but)
 	$'UI/Base'.add_child(in_but)
 	$'UI/Base'.add_child(out_but)
+
+func getSize():
+	return SIZE
+
 
 func rotateFail(mat):
 	var top = 0
