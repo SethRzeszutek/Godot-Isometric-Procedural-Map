@@ -57,7 +57,14 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):  squareMap()
 	if event.is_action_pressed("ui_cancel"):  deleteMap()
 	if event.is_action_pressed("rotate"):  rotateMap()
-	if event.is_action_pressed("rotate_fail"):  rotateMapFail()
+	
+	
+func _process(delta):
+	var rotate_fail = Input.is_action_pressed("rotate_fail")
+	if(rotate_fail):
+		rotateMapFail()
+	
+	
 	
 
 func squareMap():
