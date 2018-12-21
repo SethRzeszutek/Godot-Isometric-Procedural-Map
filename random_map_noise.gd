@@ -37,35 +37,16 @@ func _ready():
 	set_process_input(true)
 	var rec = Rect2(300,150,400,200)
 	get_node("UI/AcceptDialog").popup(rec)
-	
-#	var but = run_button.instance()
-#	but.connect_me(self)
-#	var but1 = run_button.instance()
-#	but1.connect_me(self)
-#	var but2 = rotate_button.instance()
-#	but2.connect_me(self)
-#	var but5 = up.instance()
-#	but5.connect_me(self)
-#	var but6 = down.instance()
-#	but6.connect_me(self)
-#	var but7 = left.instance()
-#	but7.connect_me(self)
-#	var but8 = right.instance()
-#	but8.connect_me(self)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):  squareMap()
 	if event.is_action_pressed("ui_cancel"):  deleteMap()
-	if event.is_action_pressed("rotate"):  rotateMap()
-	
+	if event.is_action_pressed("rotate"):  rotateMap()	
 	
 func _process(delta):
 	var rotate_fail = Input.is_action_pressed("rotate_fail")
 	if(rotate_fail):
 		rotateMapFail()
-	
-	
-	
 
 func squareMap():
 	deleteMap()
@@ -250,7 +231,6 @@ func create_buttons():
 func getSize():
 	return SIZE
 
-
 func rotateFail(mat):
 	var top = 0
 	var bottom = len(mat)-1
@@ -288,43 +268,3 @@ func rotateFail(mat):
 			prev = curr 
 		left += 1
 	return mat 
-
-
-
-
-#############NOT USED################
-
-#func randomNoise(width,height):
-#	var grid = []
-#	for i in range(width):
-#		grid.append([randi()%6])
-#		for j in range(height):
-#			grid[i].append(randi()%6)
-#	#print(grid)
-#
-#
-#
-
-#func NoiseFromPython(width,height):
-#	noise.seed = randi();
-#	noise.octaves = 4;
-#	noise.period = 20.0;
-#	noise.persistence = 0.8;
-#
-#	var gen = noise.get_noise_2d(0,1)
-#
-#
-#	var fullvalue = []
-#	for y in range(height):
-#		#print("Went through y:", y)
-#		var value = []
-#		for x in range(width):
-#			#print("Went through x", x)
-#			var nx = x/width - 0.5
-#			var ny = y/height - 0.5
-#			#e= random.uniform(0.3, 1.9)
-#			var e = 1 #* noise(1 * nx, 1 * ny,gen) +  0.5 * noise(2 * nx, 2 * ny,gen) + 0.25 * noise(4 * nx, 4 * ny,gen)
-#			e = pow(e, 2.75)
-#			#value.append(round(e,2))
-#		fullvalue.append(value)
-#	return fullvalue

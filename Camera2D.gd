@@ -10,8 +10,6 @@ export var zoomMax = 60.0 #3.0
 #export var marginX = 200.0
 #export var marginY = 200.0
 
-var superdelta
-
 var mousepos = Vector2()
 var mouseposGlobal = Vector2()
 var start = Vector2()
