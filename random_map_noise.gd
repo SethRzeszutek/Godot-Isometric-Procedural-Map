@@ -26,12 +26,6 @@ onready var zoom_in_button = preload("res://Other_Scenes/ZoomIn.tscn")
 onready var zoom_out_button = preload("res://Other_Scenes/ZoomOut.tscn")
 onready var data_button = preload("res://Other_Scenes/StartData.tscn")
 
-#onready var up = preload("res://Other_Scenes/Up.tscn")
-#onready var down = preload("res://Other_Scenes/Down.tscn")
-#onready var left = preload("res://Other_Scenes/Left.tscn")
-#onready var right = preload("res://Other_Scenes/Right.tscn")
-
-
 func _ready():
 	create_buttons()
 	set_process_input(true)
@@ -195,35 +189,20 @@ func create_buttons():
 	var but = run_button.instance()
 	var circle_but = circle_button.instance()
 	var rotate_but = rotate_button.instance()
-	
-#	var up_but = up.instance()
-#	var down_but = down.instance()
-#	var left_but = left.instance()
-#	var right_but = right.instance()
-	
+
 	var in_but = zoom_in_button.instance()
 	var out_but = zoom_out_button.instance()
 	var data_but = data_button.instance()
 	but.rect_position = Vector2(buttons.size() * 64 + 32  , -60)
 	circle_but.rect_position = Vector2(buttons.size() * 64 + 32 + 64  , -60)
 	
-	#tried to implement these, but I cant really pull out the various directional controls into functions to cal and update 
-	#up_but.rect_position = Vector2(buttons.size() * 64 + 32 + 128 + 317 , -110)
-	#down_but.rect_position = Vector2(buttons.size() * 64 + 32 + 128 + 317 , -60)
-	#left_but.rect_position = Vector2(buttons.size() * 64 + 32 + 74 + 317 , -60)
-	#right_but.rect_position = Vector2(buttons.size() * 64 + 32 + 182 + 317 , -60)
-	
 	data_but.rect_position = Vector2(buttons.size() * 64 + 32 + 64 + 560 , -50)
 	rotate_but.rect_position = Vector2(buttons.size() * 64 + 32 + 64 + 720 , -60)
 	in_but.rect_position = Vector2(buttons.size() * 64 + 32 + 128 + 720 , -60)
 	out_but.rect_position = Vector2(buttons.size() * 64 + 32 + 192 + 720, -60)
 	$'UI/Base'.add_child(but)
-	$'UI/Base'.add_child(rotate_but)
 	$'UI/Base'.add_child(circle_but)
-	#$'UI/Base'.add_child(up_but)
-	#$'UI/Base'.add_child(down_but)
-	#$'UI/Base'.add_child(left_but)
-	#$'UI/Base'.add_child(right_but)
+	$'UI/Base'.add_child(rotate_but)
 	$'UI/Base'.add_child(data_but)
 	$'UI/Base'.add_child(in_but)
 	$'UI/Base'.add_child(out_but)
