@@ -74,7 +74,6 @@ modulate = Color( 0.021698, 0.17057, 0.617188, 0.509804 )
 rect_clip_content = true
 
 [node name="SizeGroup" type="Control" parent="UI/Base"]
-editor/display_folded = true
 margin_left = 284.0
 margin_top = -68.0
 margin_right = 358.0

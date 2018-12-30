@@ -48,10 +48,17 @@ func squareMap():
 	var octave = float($UI/Base/OctaveGroup/Octave.get_text())
 	var period = float($UI/Base/PeriodGroup/Period.get_text())
 	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())
+	
+	if(size > 500):
+		var node = get_node("UI/Base/SizeGroup/Size")
+		node.set_text("500")
+		size = 500
+	
 	SIZE = size
 	Octaves = octave
 	Period = period
 	Persistence = persistence
+	
 	var temp = simplexNoise()
 	createMap(temp);
 
@@ -75,7 +82,13 @@ func circleMap():
 	var size = int($UI/Base/SizeGroup/Size.get_text())
 	var octave = float($UI/Base/OctaveGroup/Octave.get_text())
 	var period = float($UI/Base/PeriodGroup/Period.get_text())
-	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())	
+	var persistence = float($UI/Base/PersistGroup/Persistence.get_text())
+	
+	if(size > 500):
+		var node = get_node("UI/Base/SizeGroup/Size")
+		node.set_text("500")
+		size = 500
+	
 	SIZE = size	
 	Octaves = octave
 	Period = period
